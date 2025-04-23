@@ -2,7 +2,10 @@ import pygame
 from circleshape import *
 from constants import *
 from shot import *
-#from main import *
+
+pygame.mixer.init()
+shooty_sound = pygame.mixer.Sound('shoot.mp3')
+
 class Player(CircleShape):
     def __init__(self, x, y, shots_group):
         super().__init__(x, y, PLAYER_RADIUS)
@@ -14,6 +17,7 @@ class Player(CircleShape):
     def shoot(self):
         #print("Shoot method called!")
         if self.shot_timer <= 0:
+            shooty_sound.play()
             self.shot_timer = PLAYER_SHOOT_COOLDOWN
             shot = Shot(self.position.x, self.position.y)
             shot.velocity = pygame.Vector2(0, 1).rotate(self.rotation) * PLAYER_SHOOT_SPEED

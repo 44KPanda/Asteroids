@@ -10,6 +10,8 @@ from asteroid import *
 from asteroidfield import *
 
 
+
+
 def main():
     pygame.init()
     clock = pygame.time.Clock()
